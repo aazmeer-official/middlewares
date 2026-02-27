@@ -7,16 +7,14 @@ const port = 3000;
 // Express App
 
 app.use((req,res,next)=>{
-console.log("Hi I am 1st Middle Ware")
+    req.time = new Date(Date.now()).toString();
+console.log(req.method,req.path,req.hostname,req.time)
 next()
 })
 
 app.get("/",(req,res)=>{
     res.send("Root Page")
-})
-app.use((req,res,next)=>{
-console.log("Hi I am 2nd Middle Ware")
-next()
+
 })
 
 app.get("/random",(req,res)=>{
